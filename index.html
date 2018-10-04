@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Tetris Binaire</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="user-scalable=no" />
+      <link rel="stylesheet" type="text/css" href="css/styles.css">
+      <script src="js/main.js"></script>
+      <script src="js/model.js"></script>
+   </head>
+   <body>
+      <!-- TITLE PAGE: Shown at start up        -->
+      <div id="title">
+         <h1>Tetris Binaire</h1>
+
+         <p>
+            Le tetris binaire est un jeu sérieu avec lequel, vous allez
+            apprendre à convertir rapidement des nombres entre le binaire,
+            l'octal le décimal et l'hexadécimal
+         </p>
+
+         <p>
+            Le but du jeu est d'effacer les lignes en faisant que le mot
+            binaire corresponde à la valeur numérique dans l'une des bases 
+            supportées par le jeu
+         </p>
+
+         <p class="center">
+            <input type="button" value="Commencer" id="btnStart" class="action">
+         </p>
+         
+      </div>
+
+      <!-- GAME PAGE:  Shown when playing       -->
+      <div id="game">
+         <div id="statusPane">
+            <p>
+               <strong>Score: </strong><span id="gameScore"> score </span>
+               <strong>Line:  </strong><span id="gameLine" > Line  </span>
+               <strong>Level: </strong><span id="gameLevel"> Level </span>
+            </p>
+         </div>
+         <div id="playArea">
+
+         </div>
+         <div id="keyboardPane">
+            <input class="keyboard" type="button" value="0">
+            <input class="keyboard" type="button" value="1">
+            <input class="keyboard" type="button" value="2">
+            <input class="keyboard" type="button" value="3">
+            <input class="keyboard" type="button" value="4">
+            <input class="keyboard" type="button" value="5">
+            <input class="keyboard" type="button" value="6">
+            <input class="keyboard" type="button" value="7">
+            <input class="keyboard" type="button" value="8">
+            <input class="keyboard" type="button" value="9">
+            <input class="keyboard" type="button" value="A">
+            <input class="keyboard" type="button" value="B">
+            <input class="keyboard" type="button" value="C">
+            <input class="keyboard" type="button" value="D">
+            <input class="keyboard" type="button" value="E">
+            <input class="keyboard" type="button" value="F">
+            <input class="keyboard" type="button" value="DEL">
+         </div>
+      </div>
+
+      <!-- OVER PAGE:  Shown when game is over  -->
+      <div id="over">
+         <h1>Partie terminée</h1>
+         <p>
+            <strong>Score: </strong><span id="overScore"> score </span>
+            <strong>Line:  </strong><span id="overLine">  Line </span>
+            <strong>Level: </strong><span id="overLevel"> Level </span>
+         </p>
+
+         <p class="center">
+            <input type="button" value="Retour au titre" id="btnTitle" class="action">
+         </p>
+   
+      </div>
+   </body>
+</html>

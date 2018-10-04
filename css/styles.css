@@ -1,0 +1,166 @@
+* {
+   margin: 2px;
+}
+
+/*******************************************************************************
+*** Animation to remove the solved conversion
+*******************************************************************************/
+.removeAnimation {
+    -webkit-animation: fadeOut 500ms;
+    -moz-animation: fadeOut 500ms;
+    animation: fadeOut 500ms;
+}
+
+@keyframes fadeOut {
+  from { transform: scale(1, 1); }
+  to   { transform: scale(0, 0); }
+}
+
+/*******************************************************************************
+*** Global elements. They set the overall aspect ratio
+*******************************************************************************/
+#title, #game, #over {
+  background-color: black;
+  color: white;
+  width:  562px;
+  height: 850px;
+  padding: 5px;
+  margin: auto;
+  border-radius: 5px;
+  display: block;
+  position: absolute;
+  left:0px;
+  top:0px;
+  transform: scale(1,1);
+  image-rendering: optimizeSpeed;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+p {
+  text-align: justify;
+  margin: 0.5em 1em;
+  font-size: 125%;
+}
+
+.center {
+  text-align: center;
+}
+
+input.action {
+  font-size: 200%;
+}
+
+/*******************************************************************************
+*** Status pane definition
+*******************************************************************************/
+#statusPane {
+  height: 70px;
+}
+
+#statusPane strong, #statusPane span {
+  width: 15%;
+  display: inline-block;
+}
+
+/*******************************************************************************
+*** Play area definition (and conversion)
+*******************************************************************************/
+
+#playArea {
+  height: 550px;
+  padding: 5px;
+  margin-bottom: 5px;
+  background-color: rgba(200, 200, 255, 0.75);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+
+}
+
+.gameLine {
+  width: 100%;
+  height: 60px;
+  background-color: rgba(0,0,0, 0.75);
+  display: flex;
+  overflow: hidden;
+}
+
+.binaryPane {
+  width: 410px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.binaryInput {
+  width:  50px;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50px;
+  font-size: 2em;
+  margin: 5px;
+  background-color: #585;
+  color: #aaa;
+}
+
+.numberPane {
+  width: 125px;
+  background-color: #55A;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.numberInput {
+  width:  60px;
+  height: 50px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 125%;
+}
+
+.numberPane .baseVal {
+  width: 20px;
+  font-size: 75%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  top: 1em;
+}
+
+.numberPane .equalSign {
+  width: 20px;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/*******************************************************************************
+*** Virtual keyboard definition
+*******************************************************************************/
+#keyboardPane {
+  height: 200px;
+  background-color: rgba(200, 200, 255, 0.75);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.keyboard {
+  width:  60px;
+  height: 60px;
+  margin: 0.10em;
+  font-size: 100%;
+  background-color: #555;
+  color: #aaa;
+}
