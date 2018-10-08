@@ -164,3 +164,18 @@ input.action {
   background-color: #555;
   color: #aaa;
 }
+
+.g1 {
+  border-bottom-color: red;
+  border-bottom-width: 3px;
+}
+
+.g2 {
+  border-bottom-color: cyan;
+  border-bottom-width: 3px;
+}
+
+.g3 {
+  border-bottom-color: yellow;
+  border-bottom-width: 3px;
+}

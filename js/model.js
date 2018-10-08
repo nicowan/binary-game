@@ -152,6 +152,13 @@ class GameModel {
       }
       return false;
    }
+    
+   /**
+    * Get the given conversion
+    */
+   getConversion(id) {
+      return this.convs[id];
+   }
 }
 
 class ModelConversion {
@@ -171,6 +178,9 @@ class ModelConversion {
 
       /** Is the binary value fixed (when false, the user has to find out the binary value) */
       this.binaryFixed = Math.random() > 0.5;
+
+      //this.base = 10; 
+      //this.binaryFixed = true;
    }
 
    /**

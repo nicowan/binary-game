@@ -30,15 +30,15 @@ let config = {
 
   /** Level definitions */
   LEVELS: {
-    1: {point:   1, delay: 5.0, maxLine:  20},
-    2: {point:   2, delay: 4.5, maxLine:  40},
-    3: {point:   4, delay: 4.0, maxLine:  60},
-    4: {point:   8, delay: 3.5, maxLine:  80},
-    5: {point:  16, delay: 3.0, maxLine: 100},
-    6: {point:  32, delay: 2.5, maxLine: 120},
-    7: {point:  64, delay: 2.0, maxLine: 140},
-    8: {point: 128, delay: 1.0, maxLine: 200},
-    9: {point: 128, delay: 0.1, maxLine: 900},
+    1: {point:   1, delay: 15.0, maxLine:  10},
+    2: {point:   2, delay: 10.0, maxLine:  20},
+    3: {point:   4, delay:  8.0, maxLine:  50},
+    4: {point:   8, delay:  6.0, maxLine:  80},
+    5: {point:  16, delay:  5.0, maxLine: 100},
+    6: {point:  32, delay:  4.0, maxLine: 120},
+    7: {point:  64, delay:  3.0, maxLine: 140},
+    8: {point: 128, delay:  2.0, maxLine: 200},
+    9: {point: 128, delay:  1.0, maxLine: 900},
   },
 }
 
@@ -287,7 +287,7 @@ class GameView {
    * @param {Number}  id The Conversion ID
    * @param {String} val The value to be checked against the model
    */
-  checNumConversion(id, val) {
+  checkNumConversion(id, val) {
     if (this.model.checkNumericValue(id, val)) {
       this.deleteAfterAnimation(this, id);
     }
@@ -373,14 +373,12 @@ class ViewConversion {
       // Hack to force the value to upper case because it looks better
       // Use setTimeout to ensure the function is executed after the 
       // character has been added 
-      console.log("touche pressé dans input");
       setTimeout(function() {
         let start = inp.selectionStart;
         let end   = inp.selectionEnd;
         inp.value = inp.value.toUpperCase();
         inp.setSelectionRange(start, end);
         self.onNumChange();
-        console.log("Mise en majuscule");
       }, 0);   
     }
   }
@@ -404,7 +402,24 @@ class ViewConversion {
    */
   onNumChange() {
     let result = this.htmlNum.value;
-    this.view.checNumConversion(this.id, result);
+
+    // TODO: Find out a way to help the player 
+    /* This was a try to mark in green correct bits and red the wrong one
+    ** It brings more confusion
+    let conv = this.view.model.getConversion(this.id);
+
+
+    let numVal = conv.convertToNumber(result, this.base);
+    let strVal = conv.convertToString(numVal, 2, config.BINRAY_LEN);
+    console.log(strVal + "  " + conv.binary);
+
+    // Update bit colors, in the hope it will help guessing the value
+    for (let i = 0; i < config.BINRAY_LEN; i++) {
+      this.htmlBin[i].className = "binaryInput " +
+        ((strVal[i] == conv.binary[i]) ? "ok" : "ko");
+    }
+    */
+    this.view.checkNumConversion(this.id, result);
   }
 
   /**
@@ -419,8 +434,17 @@ class ViewConversion {
 
     // Create the binary inputs 
     for(let i=0; i<config.BINRAY_LEN; i++) {
+      let group = (i < 2 ? 'g1' : (i < 5 ? 'g2' : 'g3'));
+
+      if (this.base == 8) {
+        group = (i < 2 ? 'g1' : (i < 5 ? 'g2' : 'g3'))
+      }
+      else {
+        group = (i < 4 ? 'g2' : 'g3');
+      }
+
       this.htmlBin[i] = document.createElement("input");
-      this.htmlBin[i].className = "binaryInput";
+      this.htmlBin[i].className = "binaryInput " + group;
       this.htmlBin[i].type      = "button";
       this.htmlBin[i].value     = this.binary[i];
       this.htmlBin[i].disabled  = this.binaryFixed;
