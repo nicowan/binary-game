@@ -119,6 +119,12 @@ class GameModel {
             throw "All levels are completed";
          }
       }
+      // Add a new conversion when screen is cleared
+      if (this.countOnScreen < 1) {
+         this.waitTime = 0;
+         // Add a mega bonus!!!
+         this.score += config.LEVELS[this.level].point * 10;
+      }
    }
 
    /**
