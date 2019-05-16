@@ -88,7 +88,7 @@ class GameModel {
          }
          else {
             // Create a new conversion and add it to the associative array
-            let conv = new ModelConversion(this.convId++);
+            let conv = new ModelConversion(this.convId++, this.level);
             this.convs[conv.id] = conv;
 
             // Add the conversion to the view
@@ -171,13 +171,15 @@ class ModelConversion {
    /**
     * Class constructor
     * @param {number} id The conversion identifier
+    * @param {number} level The current game level.
     */
-   constructor(id) {
+   constructor(id, level) {
       /** The conversion unique identifier */
       this.id = id || 0;
 
       /** integer value to be converted stored as a number */
-      this.value = (Math.random() * ((1 << config.BINRAY_LEN) - 1)) | 0;
+      //this.value = (Math.random() * ((1 << config.BINRAY_LEN) - 1)) | 0;
+      this.value = this.randomNumber(config.LEVELS[level].maxBitSet);
 
       /** base used by the number */
       this.base  = config.BASE_LIST[(Math.random() * config.BASE_LIST.length) | 0];
@@ -188,6 +190,23 @@ class ModelConversion {
       //this.base = 10; 
       //this.binaryFixed = true;
    }
+
+   /**
+    * Generate a random number given the game level
+    * @param {number} maxBitSet represents the maximum number of bit that can be set
+    */
+   randomNumber(maxBitSet) {
+      let result = 0;
+
+      for(let i = 0; i< maxBitSet; i++) {
+         result |= (1 << Math.floor(Math.random() * config.BINRAY_LEN));
+      }
+
+      return result;
+   }
+
+
+
 
    /**
     * The value has a binary string
@@ -207,7 +226,7 @@ class ModelConversion {
     * Convert to number
     * @param   {string} strVal The value as a string 
     * @param   {number} base   The base used in the string
-    * @returns {number} The strVal converted in a numerci value
+    * @returns {number} The strVal converted in a numeric value
     */
    convertToNumber(strVal, base) {
       let result = 0;

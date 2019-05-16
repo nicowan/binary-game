@@ -30,15 +30,15 @@ let config = {
 
   /** Level definitions */
   LEVELS: {
-    1: {point:   1, delay: 15.0, maxLine:  10},
-    2: {point:   2, delay: 10.0, maxLine:  20},
-    3: {point:   4, delay:  8.0, maxLine:  50},
-    4: {point:   8, delay:  6.0, maxLine:  80},
-    5: {point:  16, delay:  5.0, maxLine: 100},
-    6: {point:  32, delay:  4.0, maxLine: 120},
-    7: {point:  64, delay:  3.0, maxLine: 140},
-    8: {point: 128, delay:  2.0, maxLine: 200},
-    9: {point: 128, delay:  1.0, maxLine: 900},
+    1: {point:   1, delay: 15.0, maxLine:  10, maxBitSet: 2},
+    2: {point:   2, delay: 10.0, maxLine:  20, maxBitSet: 2},
+    3: {point:   4, delay:  8.0, maxLine:  50, maxBitSet: 3},
+    4: {point:   8, delay:  6.0, maxLine:  80, maxBitSet: 3},
+    5: {point:  16, delay:  5.0, maxLine: 100, maxBitSet: 4},
+    6: {point:  32, delay:  4.0, maxLine: 120, maxBitSet: 4},
+    7: {point:  64, delay:  3.0, maxLine: 140, maxBitSet: 5},
+    8: {point: 128, delay:  2.0, maxLine: 200, maxBitSet: 6},
+    9: {point: 128, delay:  1.0, maxLine: 900, maxBitSet: 8},
   },
 }
 
